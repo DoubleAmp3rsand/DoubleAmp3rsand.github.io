@@ -1,9 +1,9 @@
 [
   {
     "slug": "hello-world",
-    "title": "Hello, World!",
+    "title": "Pre-Spring Season in Japan",
     "date": "2026-04-12",
-    "excerpt": "Welcome to my blog — a place where I'll share thoughts on software engineering, projects I'm working on, and things I find interesting.",
-    "tags": ["general", "meta"]
+    "excerpt": "I was in Japan earlier this March, before the spring flower bloom.",
+    "tags": ["general"]
   }
 ]

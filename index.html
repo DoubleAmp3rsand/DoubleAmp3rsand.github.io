@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Software Engineer</title>
-  <meta name="description" content="Personal website and portfolio of Your Name." />
-  <meta property="og:title" content="Your Name" />
-  <meta property="og:description" content="Personal website and portfolio." />
+  <title>Roy Yuze Wang</title>
+  <meta name="description" content="Personal website and portfolio of Roy Wang, Data Engineer based in New York City." />
+  <meta property="og:title" content="Roy Wang" />
+  <meta property="og:description" content="Data Engineer specializing in scalable data pipelines and machine learning infrastructure." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,13 +20,12 @@
   ======================================================= -->
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Your Name</a>
+      <a href="index.html" class="nav-logo">Roy Wang</a>
       <div class="nav-links" id="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="blog.html">Blog</a>
+        <a href="#blog">Blog</a>
         <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☾</button>
       </div>
       <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu">☰</button>
@@ -45,17 +44,17 @@
         </div>
         <div class="hero-text">
           <p class="hero-greeting">Hi there, I'm</p>
-          <h1 class="hero-name">Your Name</h1>
-          <p class="hero-title">Software Engineer / [Your Title Here]</p>
+          <h1 class="hero-name">Roy Yuze Wang</h1>
+          <p class="hero-title">Data Engineer, Data Strategy</p>
           <p class="hero-bio">
-            A short bio about yourself — what you do, what you're passionate about,
-            and what makes you interesting. Keep it to 2–3 sentences.
+            I mostly work with python and pyspark on building scalable data pipeline to
+            support machine learning work. I'm also currently learning about Rust.
           </p>
           <div class="hero-links">
             <a href="https://github.com/DoubleAmp3rsand" class="btn btn-primary" target="_blank" rel="noopener">
               ⌥ GitHub
             </a>
-            <a href="#" class="btn btn-outline" target="_blank" rel="noopener">
+            <a href="https://www.linkedin.com/in/yuzewang/" class="btn btn-outline" target="_blank" rel="noopener">
               in LinkedIn
             </a>
             <a href="mailto:royannnd@gmail.com" class="btn btn-outline">
@@ -83,17 +82,17 @@
       <h2 class="section-title">A bit more about me</h2>
       <div class="about-text fade-in">
         <p>
-          Write a more detailed introduction here. Talk about your background,
-          how you got into software engineering, and what kinds of problems you
-          love to solve.
+          I'm a Data Engineer based in New York City, currently working at Marsh McLennan – Guy Carpenter.
+          My work centers on building scalable data pipelines, machine learning infrastructure, and data tooling
+          that helps teams move faster and make better decisions.
         </p>
         <p>
-          Feel free to mention hobbies, side projects, or other interests that
-          give people a sense of who you are beyond just your work.
+          I studied Computer Science and Business Information Systems at the University of Rochester,
+          where I also spent a year as a Teaching Assistant for AI and introductory CS courses.
+          Outside of work, I'm learning Rust, exploring Japan when I can, and shooting film.
         </p>
         <p>
-          Located in <strong>[Your City, Country]</strong>. Currently
-          <strong>[open to opportunities / working at ...]</strong>.
+          Fluent in English and Chinese, with elementary Japanese.
         </p>
       </div>
     </div>
@@ -113,31 +112,33 @@
         <div class="skill-group">
           <h4>Languages</h4>
           <div class="skill-tags">
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">Python</span>
-            <span class="skill-tag">Rust</span>
-            <!-- Add or remove skills -->
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">HTML / CSS</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <h4>Frontend</h4>
+          <h4>Packages</h4>
           <div class="skill-tags">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <!-- Add or remove skills -->
+            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">FAISS</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <h4>Backend</h4>
+          <h4>Technologies</h4>
           <div class="skill-tags">
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Databricks</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">DBT</span>
             <span class="skill-tag">Docker</span>
-            <!-- Add or remove skills -->
+            <span class="skill-tag">Redis</span>
           </div>
         </div>
 
@@ -145,9 +146,9 @@
           <h4>Tools & Other</h4>
           <div class="skill-tags">
             <span class="skill-tag">Git</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">GitHub Actions</span>
-            <!-- Add or remove skills -->
+            <span class="skill-tag">English</span>
+            <span class="skill-tag">Chinese</span>
+            <span class="skill-tag">Japanese</span>
           </div>
         </div>
 
@@ -168,34 +169,57 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3 class="timeline-title">Senior Software Engineer</h3>
-            <span class="timeline-date">Jan 2023 — Present</span>
+            <h3 class="timeline-title">Data Engineering, Data Strategy</h3>
+            <span class="timeline-date">Jan 2025 — Present</span>
           </div>
-          <p class="timeline-subtitle">Company Name · Full-time</p>
+          <p class="timeline-subtitle">Marsh (Formally Know as Marsh Maclennan) Guy Carpenter · Full-time · New York City</p>
           <p class="timeline-desc">
-            Describe what you did in this role. Focus on impact — what did you build,
-            what problems did you solve, and what was the outcome?
+            Developed a document auto-tagging feature using NLP, text embeddings, and FAISS — processing over
+            50,000 documents and assigning 6,000+ unique tags. Enhanced the ELT process in DBT, cutting processing
+            time by 30%. Supported APAC region expansion, improving reinsurance advisory efficiency by 50%.
+            Delivered EDA for the Broking Support Team that contributed to securing reinsurance contracts exceeding
+            $200M in premium value.
           </p>
           <div class="timeline-tags">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">DBT</span>
+            <span class="skill-tag">FAISS</span>
+            <span class="skill-tag">Databricks</span>
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3 class="timeline-title">Software Engineer</h3>
-            <span class="timeline-date">Jun 2020 — Dec 2022</span>
+            <h3 class="timeline-title">Co-op, Data Strategy</h3>
+            <span class="timeline-date">Jul 2024 — Jan 2025</span>
           </div>
-          <p class="timeline-subtitle">Another Company · Full-time</p>
+          <p class="timeline-subtitle">Marsh (Formally Know as Marsh Maclennan) Guy Carpenter · Full-TIme · New York City</p>
           <p class="timeline-desc">
-            Describe your responsibilities and achievements here. Use specific
-            numbers and outcomes wherever possible.
+            Refined the document parsing algorithm to support formats beyond DOCX, ensuring accuracy across
+            10,000+ documents. Designed an automated pipeline connecting the in-house data labeling application
+            to Azure Data Lake.
           </p>
           <div class="timeline-tags">
             <span class="skill-tag">Python</span>
-            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Azure</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3 class="timeline-title">Data Engineering Intern</h3>
+            <span class="timeline-date">Jun 2023 — Aug 2023</span>
+          </div>
+          <p class="timeline-subtitle">TCW Group · Los Angeles</p>
+          <p class="timeline-desc">
+            Built a data reconciliation solution to resolve inconsistencies between cloud and legacy databases,
+            reducing processing time by 75% through multiprocessing and concurrency. Automated data lineage
+            tracing with Python, cutting the manual operations team's workload by 80%.
+          </p>
+          <div class="timeline-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
           </div>
         </div>
 
@@ -216,12 +240,21 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3 class="timeline-title">B.S. Computer Science</h3>
-            <span class="timeline-date">2016 — 2020</span>
+            <h3 class="timeline-title">MS in Computer Science</h3>
+            <span class="timeline-date">Sep 2026 — Present</span>
           </div>
-          <p class="timeline-subtitle">University Name</p>
+          <p class="timeline-subtitle">New York University</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3 class="timeline-title">BSc in Computer Science & Business Information Systems</h3>
+            <span class="timeline-date">Sep 2020 — May 2024</span>
+          </div>
+          <p class="timeline-subtitle">University of Rochester · GPA 3.70 / 4.00</p>
           <p class="timeline-desc">
-            Optional: mention relevant coursework, thesis, clubs, or achievements.
+            Relevant coursework: Computer Organization, Database Systems, Programming Language Design,
+            Data Mining, Machine Learning, Machine Vision, Computer Audition.
           </p>
         </div>
 
@@ -232,69 +265,13 @@
   <hr class="section-divider" />
 
   <!-- ======================================================
-       Projects
+       Blog
   ======================================================= -->
-  <section id="projects">
+  <section id="blog">
     <div class="container">
-      <p class="section-label">What I've built</p>
-      <h2 class="section-title">Projects</h2>
-      <div class="projects-grid fade-in">
-
-        <div class="project-card">
-          <div class="project-card-header">
-            <span class="project-icon">🚀</span>
-            <div class="project-links">
-              <a href="#" target="_blank" rel="noopener" title="GitHub">↗ Code</a>
-              <a href="#" target="_blank" rel="noopener" title="Live demo">⬡ Demo</a>
-            </div>
-          </div>
-          <h3 class="project-name">Project Name</h3>
-          <p class="project-desc">
-            A short description of the project — what it does, why you built it,
-            and what makes it interesting.
-          </p>
-          <div class="skill-tags">
-            <span class="skill-tag">Rust</span>
-            <span class="skill-tag">WebAssembly</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-header">
-            <span class="project-icon">🤖</span>
-            <div class="project-links">
-              <a href="#" target="_blank" rel="noopener" title="GitHub">↗ Code</a>
-            </div>
-          </div>
-          <h3 class="project-name">Another Project</h3>
-          <p class="project-desc">
-            Describe this project here. What problem does it solve? Who uses it?
-          </p>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">FastAPI</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-header">
-            <span class="project-icon">🛠</span>
-            <div class="project-links">
-              <a href="#" target="_blank" rel="noopener" title="GitHub">↗ Code</a>
-              <a href="#" target="_blank" rel="noopener" title="Live demo">⬡ Demo</a>
-            </div>
-          </div>
-          <h3 class="project-name">Third Project</h3>
-          <p class="project-desc">
-            Another project description goes here.
-          </p>
-          <div class="skill-tags">
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">React</span>
-          </div>
-        </div>
-
-      </div>
+      <p class="section-label">Writing</p>
+      <h2 class="section-title">Blog</h2>
+      <div id="post-list"></div>
     </div>
   </section>
 
@@ -303,10 +280,10 @@
   ======================================================= -->
   <footer>
     <div class="footer-inner">
-      <p class="footer-copy">© <span id="year"></span> Your Name. Built with ♥ and plain HTML.</p>
+      <p class="footer-copy">© <span id="year"></span> Roy Wang. Built with Claude</p>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="https://github.com/DoubleAmp3rsand" target="_blank" rel="noopener">GitHub</a>
-        <a href="#">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/yuzewang/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="blog.html">Blog</a>
         <a href="mailto:royannnd@gmail.com">Email</a>
       </nav>

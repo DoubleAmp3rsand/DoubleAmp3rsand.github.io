@@ -92,42 +92,56 @@ async function loadBlogList() {
   try {
     const res = await fetch("posts/index.json");
     if (!res.ok) throw new Error("Failed to load posts");
-    const posts = await res.json();
+    const index = await res.json();
 
-    if (!posts.length) {
+    if (!index.length) {
       container.innerHTML = `
         <div class="blog-empty">
-          <span style="font-size:2.5rem">✏️</span>
           <p>No posts yet — check back soon!</p>
         </div>`;
       return;
     }
 
+    const sorted = index.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Fetch full content for each post
+    const posts = await Promise.all(
+      sorted.map(function (meta) {
+        return fetch("posts/" + encodeURIComponent(meta.slug) + ".json")
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; });
+      })
+    );
+
     container.innerHTML = "";
-    const ul = document.createElement("ul");
-    ul.className = "post-list";
 
-    posts
-      .slice()
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .forEach(function (post) {
-        const li = document.createElement("li");
-        li.className = "post-item fade-in";
-        li.innerHTML = `
-          <div class="post-item-meta">
-            <span class="post-date">${formatDate(post.date)}</span>
-            <div class="post-tags">
-              ${(post.tags || []).map(t => `<span class="post-tag">${t}</span>`).join("")}
-            </div>
+    posts.forEach(function (post, i) {
+      if (!post) return;
+
+      const article = document.createElement("article");
+      article.className = "inline-post fade-in";
+      article.innerHTML = `
+        <div class="inline-post-meta">
+          <span class="post-date">${formatDate(post.date)}</span>
+          <div class="post-tags">
+            ${(post.tags || []).map(function (t) { return '<span class="post-tag">' + t + "</span>"; }).join("")}
           </div>
-          <a class="post-title" href="post.html?slug=${encodeURIComponent(post.slug)}">${post.title}</a>
-          <p class="post-excerpt">${post.excerpt || ""}</p>`;
-        ul.appendChild(li);
-      });
+        </div>
+        <h3 class="inline-post-title">${post.title}</h3>
+        <div class="post-content">${Array.isArray(post.content) ? post.content.join("\n") : post.content}</div>`;
 
-    container.appendChild(ul);
+      container.appendChild(article);
 
-    // Re-trigger fade-ins for dynamically added elements
+      if (i < posts.length - 1) {
+        const hr = document.createElement("hr");
+        hr.className = "section-divider";
+        hr.style.margin = "56px 0";
+        container.appendChild(hr);
+      }
+    });
+
+    setupMasonryGalleries();
+
     const obs = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -144,7 +158,6 @@ async function loadBlogList() {
   } catch (err) {
     container.innerHTML = `
       <div class="blog-empty">
-        <span style="font-size:2rem">⚠️</span>
         <p>Could not load posts. ${err.message}</p>
       </div>`;
   }
@@ -182,6 +195,8 @@ async function loadPost() {
     const contentEl = document.getElementById("post-content");
     if (contentEl) {
       contentEl.innerHTML = Array.isArray(post.content) ? post.content.join("\n") : post.content;
+      shuffleGalleries();
+      setupMasonryGalleries();
       contentEl.classList.add("fade-in");
       setTimeout(() => contentEl.classList.add("visible"), 50);
     }
@@ -203,6 +218,115 @@ function formatDate(str) {
   const d = new Date(str + "T00:00:00");
   return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 }
+
+/* ============================================================
+   Gallery masonry sizing
+   ============================================================ */
+function setupMasonryGalleries() {
+  document.querySelectorAll(".photo-gallery").forEach(function (gallery) {
+    var figures = Array.from(gallery.querySelectorAll("figure"));
+    var imgs = figures.map(function (f) { return f.querySelector("img"); });
+    var total = imgs.filter(Boolean).length;
+    if (!total) return;
+
+    var loaded = 0;
+    function onLoad() {
+      loaded++;
+      if (loaded < total) return;
+      // Mark landscape images
+      figures.forEach(function (figure) {
+        var img = figure.querySelector("img");
+        if (img && img.naturalWidth > img.naturalHeight * 1.3) {
+          figure.classList.add("wide");
+        }
+      });
+      // Set row spans
+      resizeMasonryItems(gallery);
+    }
+
+    imgs.forEach(function (img) {
+      if (!img) return;
+      if (img.complete && img.naturalWidth) { onLoad(); }
+      else { img.addEventListener("load", onLoad); img.addEventListener("error", onLoad); }
+    });
+  });
+}
+
+function resizeMasonryItems(gallery) {
+  var rowSize = 10;
+  Array.from(gallery.querySelectorAll("figure")).forEach(function (figure) {
+    figure.style.gridRowEnd = "";
+    var span = Math.ceil((figure.scrollHeight + 10) / (rowSize + 0));
+    figure.style.gridRowEnd = "span " + span;
+  });
+}
+
+/* ============================================================
+   Lightbox
+   ============================================================ */
+(function () {
+  var box, boxImg, boxCaption;
+
+  function buildLightbox() {
+    box = document.createElement("div");
+    box.className = "lightbox";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+
+    var close = document.createElement("button");
+    close.className = "lightbox-close";
+    close.innerHTML = "&#x2715;";
+    close.setAttribute("aria-label", "Close");
+    close.addEventListener("click", closeLightbox);
+
+    boxImg = document.createElement("img");
+    boxCaption = document.createElement("p");
+    boxCaption.className = "lightbox-caption";
+
+    box.appendChild(close);
+    box.appendChild(boxImg);
+    box.appendChild(boxCaption);
+    document.body.appendChild(box);
+
+    box.addEventListener("click", function (e) {
+      if (e.target === box) closeLightbox();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
+
+  function openLightbox(src, caption) {
+    if (!box) buildLightbox();
+    boxImg.src = src;
+    boxCaption.textContent = caption || "";
+    box.style.display = "flex";
+    requestAnimationFrame(function () { box.classList.add("open"); });
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    if (!box) return;
+    box.classList.remove("open");
+    box.addEventListener("transitionend", function hide() {
+      box.style.display = "none";
+      box.removeEventListener("transitionend", hide);
+    });
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", function (e) {
+    var img = e.target.closest(".photo-gallery img");
+    if (!img) return;
+    var caption = img.closest("figure") && img.closest("figure").querySelector("figcaption");
+    openLightbox(img.src, caption ? caption.textContent : "");
+  });
+})();
+
+window.addEventListener("resize", function () {
+  document.querySelectorAll(".photo-gallery").forEach(resizeMasonryItems);
+});
 
 /* ============================================================
    Entry Points
