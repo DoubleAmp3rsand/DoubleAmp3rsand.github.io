@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Software Engineer</title>
+  <meta name="description" content="Personal website and portfolio of Your Name." />
+  <meta property="og:title" content="Your Name" />
+  <meta property="og:description" content="Personal website and portfolio." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ======================================================
+       Navigation
+  ======================================================= -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Your Name</a>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="blog.html">Blog</a>
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☾</button>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+       Hero
+  ======================================================= -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-avatar" aria-label="Profile photo">
+          <!-- Replace with: <img src="assets/avatar.jpg" alt="Your Name" /> -->
+          👤
+        </div>
+        <div class="hero-text">
+          <p class="hero-greeting">Hi there, I'm</p>
+          <h1 class="hero-name">Your Name</h1>
+          <p class="hero-title">Software Engineer / [Your Title Here]</p>
+          <p class="hero-bio">
+            A short bio about yourself — what you do, what you're passionate about,
+            and what makes you interesting. Keep it to 2–3 sentences.
+          </p>
+          <div class="hero-links">
+            <a href="https://github.com/DoubleAmp3rsand" class="btn btn-primary" target="_blank" rel="noopener">
+              ⌥ GitHub
+            </a>
+            <a href="#" class="btn btn-outline" target="_blank" rel="noopener">
+              in LinkedIn
+            </a>
+            <a href="mailto:royannnd@gmail.com" class="btn btn-outline">
+              ✉ Email
+            </a>
+            <!-- Optional: link to a resume PDF
+            <a href="assets/resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+              ↓ Resume
+            </a>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ======================================================
+       About
+  ======================================================= -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About me</p>
+      <h2 class="section-title">A bit more about me</h2>
+      <div class="about-text fade-in">
+        <p>
+          Write a more detailed introduction here. Talk about your background,
+          how you got into software engineering, and what kinds of problems you
+          love to solve.
+        </p>
+        <p>
+          Feel free to mention hobbies, side projects, or other interests that
+          give people a sense of who you are beyond just your work.
+        </p>
+        <p>
+          Located in <strong>[Your City, Country]</strong>. Currently
+          <strong>[open to opportunities / working at ...]</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ======================================================
+       Skills
+  ======================================================= -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">What I know</p>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid fade-in">
+
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Rust</span>
+            <!-- Add or remove skills -->
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Frontend</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <!-- Add or remove skills -->
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Backend</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Docker</span>
+            <!-- Add or remove skills -->
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Tools & Other</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <!-- Add or remove skills -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ======================================================
+       Experience
+  ======================================================= -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Where I've worked</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline fade-in">
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3 class="timeline-title">Senior Software Engineer</h3>
+            <span class="timeline-date">Jan 2023 — Present</span>
+          </div>
+          <p class="timeline-subtitle">Company Name · Full-time</p>
+          <p class="timeline-desc">
+            Describe what you did in this role. Focus on impact — what did you build,
+            what problems did you solve, and what was the outcome?
+          </p>
+          <div class="timeline-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3 class="timeline-title">Software Engineer</h3>
+            <span class="timeline-date">Jun 2020 — Dec 2022</span>
+          </div>
+          <p class="timeline-subtitle">Another Company · Full-time</p>
+          <p class="timeline-desc">
+            Describe your responsibilities and achievements here. Use specific
+            numbers and outcomes wherever possible.
+          </p>
+          <div class="timeline-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ======================================================
+       Education
+  ======================================================= -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label">Where I studied</p>
+      <h2 class="section-title">Education</h2>
+      <div class="timeline fade-in">
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3 class="timeline-title">B.S. Computer Science</h3>
+            <span class="timeline-date">2016 — 2020</span>
+          </div>
+          <p class="timeline-subtitle">University Name</p>
+          <p class="timeline-desc">
+            Optional: mention relevant coursework, thesis, clubs, or achievements.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ======================================================
+       Projects
+  ======================================================= -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">What I've built</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid fade-in">
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-icon">🚀</span>
+            <div class="project-links">
+              <a href="#" target="_blank" rel="noopener" title="GitHub">↗ Code</a>
+              <a href="#" target="_blank" rel="noopener" title="Live demo">⬡ Demo</a>
+            </div>
+          </div>
+          <h3 class="project-name">Project Name</h3>
+          <p class="project-desc">
+            A short description of the project — what it does, why you built it,
+            and what makes it interesting.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">Rust</span>
+            <span class="skill-tag">WebAssembly</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-icon">🤖</span>
+            <div class="project-links">
+              <a href="#" target="_blank" rel="noopener" title="GitHub">↗ Code</a>
+            </div>
+          </div>
+          <h3 class="project-name">Another Project</h3>
+          <p class="project-desc">
+            Describe this project here. What problem does it solve? Who uses it?
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">FastAPI</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-icon">🛠</span>
+            <div class="project-links">
+              <a href="#" target="_blank" rel="noopener" title="GitHub">↗ Code</a>
+              <a href="#" target="_blank" rel="noopener" title="Live demo">⬡ Demo</a>
+            </div>
+          </div>
+          <h3 class="project-name">Third Project</h3>
+          <p class="project-desc">
+            Another project description goes here.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       Footer
+  ======================================================= -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© <span id="year"></span> Your Name. Built with ♥ and plain HTML.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://github.com/DoubleAmp3rsand" target="_blank" rel="noopener">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="blog.html">Blog</a>
+        <a href="mailto:royannnd@gmail.com">Email</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

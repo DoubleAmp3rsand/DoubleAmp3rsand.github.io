@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Your Name</title>
+  <meta name="description" content="Thoughts, tutorials, and notes by Your Name." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Your Name</a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="blog.html">Blog</a>
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☾</button>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Blog Header -->
+  <div class="blog-header">
+    <div class="container">
+      <p class="section-label">Writing</p>
+      <h1>Blog</h1>
+      <p>Thoughts, tutorials, and notes on software engineering and beyond.</p>
+    </div>
+  </div>
+
+  <!-- Post List -->
+  <div class="blog-list">
+    <div class="container">
+      <div id="post-list">
+        <!-- Populated by main.js via posts/index.json -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© <span id="year"></span> Your Name.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://github.com/DoubleAmp3rsand" target="_blank" rel="noopener">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="index.html">Home</a>
+        <a href="mailto:royannnd@gmail.com">Email</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

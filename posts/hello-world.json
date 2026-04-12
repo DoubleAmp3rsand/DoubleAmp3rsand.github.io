@@ -1,0 +1,6 @@
+{
+  "title": "Hello, World!",
+  "date": "2026-04-12",
+  "tags": ["general", "meta"],
+  "content": "<p>Welcome to my blog! This is a sample first post — feel free to replace this with your own writing.</p><p>This site is built with plain HTML, CSS, and vanilla JavaScript, and served via GitHub Pages. No build step, no frameworks — just fast, simple, and easy to maintain.</p><h2>How the blog works</h2><p>Each post lives in a <code>posts/</code> directory as a JSON file. The file contains the post title, date, tags, and HTML content. To add a new post:</p><ol><li>Create a new file at <code>posts/my-post-slug.json</code> with your content.</li><li>Add an entry for it in <code>posts/index.json</code>.</li><li>Commit and push — GitHub Pages deploys automatically.</li></ol><p>That's it. No CMS, no database, no server.</p><h2>What's next</h2><p>Replace this placeholder with your own writing. Talk about something you built, a problem you solved, a book you read — whatever you find interesting.</p><hr /><p>Thanks for reading!</p>"
+}
