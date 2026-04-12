@@ -181,7 +181,7 @@ async function loadPost() {
 
     const contentEl = document.getElementById("post-content");
     if (contentEl) {
-      contentEl.innerHTML = post.content;
+      contentEl.innerHTML = Array.isArray(post.content) ? post.content.join("\n") : post.content;
       contentEl.classList.add("fade-in");
       setTimeout(() => contentEl.classList.add("visible"), 50);
     }
