@@ -1,5 +1,12 @@
 [
   {
+    "slug": "us-cat-analysis",
+    "title": "A Statistical Toolkit for US Catastrophe Loss Trends",
+    "date": "2026-05-08",
+    "excerpt": "A walkthrough of the statistical machinery used to model the insured-vs-economic loss gap in US natural catastrophes (1990–2024).",
+    "tags": ["statistics", "data", "catastrophe"]
+  },
+  {
     "slug": "hello-world",
     "title": "Pre-Spring Season in Japan",
     "date": "2026-04-12",
