@@ -626,6 +626,51 @@ section {
   margin: 36px 0;
 }
 
+.post-content h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 48px 0 18px;
+}
+
+.post-content h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+}
+
+.post-content strong { font-weight: 700; color: var(--text); }
+.post-content em { font-style: italic; }
+
+.post-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post-content a:hover { opacity: 0.8; }
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 28px;
+  font-size: 0.94rem;
+  display: block;
+  overflow-x: auto;
+}
+.post-content thead {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--border);
+}
+.post-content th,
+.post-content td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.post-content th { font-weight: 700; }
+.post-content tbody tr:nth-child(even) { background: var(--bg-secondary); }
+
 /* ============================================================
    Footer
    ============================================================ */
