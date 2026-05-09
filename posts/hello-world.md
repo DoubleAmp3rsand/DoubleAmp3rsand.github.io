@@ -1,0 +1,27 @@
+---
+title: Pre-Spring Season in Japan
+date: 2026-04-12
+tags: [general]
+---
+
+I was in Japan earlier this march, before the spring flower bloom.
+
+March in Japan was quite cold, but it was beautiful. There were flowers that bloom early, showing signes of spring.
+
+The serenity of the enviroment in Japan was not something like New York, its a luxury I savor to every last bit.
+
+Hopefully I will be back one day.
+
+---
+
+<div class="photo-gallery">
+  <figure><img src="images/DSCF1856.JPG" alt="Some Temple in Tokyo" loading="lazy" /><figcaption>Some Temple in Tokyo</figcaption></figure>
+  <figure><img src="images/DSCF1952.JPG" alt="Nihondaira Yume Terrace " loading="lazy" /><figcaption>Nihondaira Yume Terrace</figcaption></figure>
+  <figure><img src="images/DSCF1861.JPG" alt="Yokohama China Town" loading="lazy" /><figcaption>Yokohama China Town</figcaption></figure>
+  <figure><img src="images/DSCF1922.JPG" alt="三保松原, Mt. Fuji" loading="lazy" /><figcaption>三保松原, Mt. Fuji</figcaption></figure>
+  <figure><img src="images/DSCF1926.JPG" alt="三保松原" loading="lazy" /><figcaption>三保松原</figcaption></figure>
+  <figure><img src="images/DSCF1941.JPG" alt="Some Temple in Nagoya" loading="lazy" /><figcaption>Some Temple in Nagoya</figcaption></figure>
+  <figure><img src="images/DSCF1869.JPG" alt="Cup Noodle Museum" loading="lazy" /><figcaption>Cup Noodle Museum</figcaption></figure>
+  <figure><img src="images/DSCF2123.JPG" alt="Kyoto" loading="lazy" /><figcaption>Kyoto</figcaption></figure>
+  <figure><img src="images/DSCF2025.JPG" alt="Nagoya Castle" loading="lazy" /><figcaption>Nagoya Castle</figcaption></figure>
+</div>

@@ -81,6 +81,46 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ============================================================
+   Markdown loader — fetches a .md file and parses frontmatter
+   ============================================================ */
+function parseFrontmatter(text) {
+  const match = /^---\n([\s\S]*?)\n---\n?([\s\S]*)$/.exec(text);
+  if (!match) return { meta: {}, body: text };
+
+  const meta = {};
+  match[1].split("\n").forEach(function (line) {
+    const idx = line.indexOf(":");
+    if (idx === -1) return;
+    const key = line.slice(0, idx).trim();
+    let value = line.slice(idx + 1).trim();
+    if (value.startsWith("[") && value.endsWith("]")) {
+      value = value.slice(1, -1).split(",").map(function (s) {
+        return s.trim().replace(/^["']|["']$/g, "");
+      }).filter(Boolean);
+    } else {
+      value = value.replace(/^["']|["']$/g, "");
+    }
+    meta[key] = value;
+  });
+
+  return { meta: meta, body: match[2] };
+}
+
+async function fetchPost(slug) {
+  const res = await fetch("posts/" + encodeURIComponent(slug) + ".md");
+  if (!res.ok) throw new Error("Post not found (" + res.status + ")");
+  const text = await res.text();
+  const parsed = parseFrontmatter(text);
+  return {
+    slug: slug,
+    title: parsed.meta.title || slug,
+    date: parsed.meta.date || "",
+    tags: Array.isArray(parsed.meta.tags) ? parsed.meta.tags : (parsed.meta.tags ? [parsed.meta.tags] : []),
+    html: window.marked ? window.marked.parse(parsed.body) : parsed.body
+  };
+}
+
+/* ============================================================
    Blog List Page — fetches posts/index.json and renders posts
    ============================================================ */
 async function loadBlogList() {
@@ -104,12 +144,9 @@ async function loadBlogList() {
 
     const sorted = index.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Fetch full content for each post
     const posts = await Promise.all(
       sorted.map(function (meta) {
-        return fetch("posts/" + encodeURIComponent(meta.slug) + ".json")
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .catch(function () { return null; });
+        return fetchPost(meta.slug).catch(function () { return null; });
       })
     );
 
@@ -128,7 +165,7 @@ async function loadBlogList() {
           </div>
         </div>
         <h3 class="inline-post-title">${post.title}</h3>
-        <div class="post-content">${Array.isArray(post.content) ? post.content.join("\n") : post.content}</div>`;
+        <div class="post-content">${post.html}</div>`;
 
       container.appendChild(article);
 
@@ -179,9 +216,7 @@ async function loadPost() {
   }
 
   try {
-    const res = await fetch(`posts/${encodeURIComponent(slug)}.json`);
-    if (!res.ok) throw new Error(`Post not found (${res.status})`);
-    const post = await res.json();
+    const post = await fetchPost(slug);
 
     document.title = `${post.title} — Blog`;
     titleEl.textContent = post.title;
@@ -194,8 +229,7 @@ async function loadPost() {
 
     const contentEl = document.getElementById("post-content");
     if (contentEl) {
-      contentEl.innerHTML = Array.isArray(post.content) ? post.content.join("\n") : post.content;
-      shuffleGalleries();
+      contentEl.innerHTML = post.html;
       setupMasonryGalleries();
       contentEl.classList.add("fade-in");
       setTimeout(() => contentEl.classList.add("visible"), 50);
