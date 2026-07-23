@@ -106,14 +106,33 @@ function parseFrontmatter(text) {
   return { meta: meta, body: match[2] };
 }
 
+/* Ensure the markdown renderer is available, loading it on demand so pages
+   don't have to remember to include the <script> tag themselves. */
+let _markedPromise = null;
+function ensureMarked() {
+  if (window.marked && typeof window.marked.parse === "function") {
+    return Promise.resolve();
+  }
+  if (_markedPromise) return _markedPromise;
+  _markedPromise = new Promise(function (resolve, reject) {
+    const script = document.createElement("script");
+    script.src = "js/marked.min.js";
+    script.onload = function () {
+      if (window.marked && typeof window.marked.parse === "function") resolve();
+      else reject(new Error("Markdown renderer loaded but is unavailable."));
+    };
+    script.onerror = function () { reject(new Error("Markdown renderer failed to load.")); };
+    document.head.appendChild(script);
+  });
+  return _markedPromise;
+}
+
 async function fetchPost(slug) {
+  await ensureMarked();
   const res = await fetch("posts/" + encodeURIComponent(slug) + ".md");
   if (!res.ok) throw new Error("Post not found (" + res.status + ")");
   const text = await res.text();
   const parsed = parseFrontmatter(text);
-  if (!window.marked || typeof window.marked.parse !== "function") {
-    throw new Error("Markdown renderer failed to load.");
-  }
   return {
     slug: slug,
     title: parsed.meta.title || slug,
