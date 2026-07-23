@@ -111,12 +111,15 @@ async function fetchPost(slug) {
   if (!res.ok) throw new Error("Post not found (" + res.status + ")");
   const text = await res.text();
   const parsed = parseFrontmatter(text);
+  if (!window.marked || typeof window.marked.parse !== "function") {
+    throw new Error("Markdown renderer failed to load.");
+  }
   return {
     slug: slug,
     title: parsed.meta.title || slug,
     date: parsed.meta.date || "",
     tags: Array.isArray(parsed.meta.tags) ? parsed.meta.tags : (parsed.meta.tags ? [parsed.meta.tags] : []),
-    html: window.marked ? window.marked.parse(parsed.body) : parsed.body
+    html: window.marked.parse(parsed.body)
   };
 }
 
