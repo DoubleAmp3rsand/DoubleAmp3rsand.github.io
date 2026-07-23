@@ -153,6 +153,10 @@ async function loadBlogList() {
       })
     );
 
+    if (!posts.some(Boolean)) {
+      throw new Error("Posts could not be rendered.");
+    }
+
     container.innerHTML = "";
 
     posts.forEach(function (post, i) {
@@ -182,18 +186,27 @@ async function loadBlogList() {
 
     setupMasonryGalleries();
 
-    const obs = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05 }
-    );
-    container.querySelectorAll(".fade-in").forEach(function (el) { obs.observe(el); });
+    const fadeEls = container.querySelectorAll(".fade-in");
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+      fadeEls.forEach(function (el) { obs.observe(el); });
+      // Safety net: never leave posts stuck invisible if the observer misfires.
+      setTimeout(function () {
+        fadeEls.forEach(function (el) { el.classList.add("visible"); });
+      }, 1200);
+    } else {
+      fadeEls.forEach(function (el) { el.classList.add("visible"); });
+    }
 
   } catch (err) {
     container.innerHTML = `
